@@ -1,69 +1,54 @@
 ---
-// src/components/Button.astro
 type Props = {
   href?: string;
   variant?: "solid" | "outline";
-  class?: string;
+  type?: "button" | "submit";
 };
 
-const {
-  href,
-  variant = "solid",
-  class: className = "",
-} = Astro.props;
-
-const Tag = href ? "a" : "button";
-const attrs = href
-  ? { href }
-  : { type: "button" as const };
+const { href, variant = "solid", type = "button" } = Astro.props;
+const base = "ny-btn";
+const cls =
+  variant === "outline" ? `${base} ${base}--outline` : `${base} ${base}--solid`;
 ---
 
-<Tag
-  {...attrs}
-  class={`ny-btn ny-btn--${variant} ${className}`}
->
-  <slot />
-</Tag>
+{href ? (
+  <a href={href} class={cls}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={cls}>
+    <slot />
+  </button>
+)}
 
 <style>
   .ny-btn {
+    border-radius: 999px;
+    padding: 9px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 10px 18px;
-    border-radius: 999px;
-    font-weight: 800;
-    text-decoration: none;
-    line-height: 1;
-    cursor: pointer;
-    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 120ms ease;
-    border: 1px solid transparent;
-    user-select: none;
+    gap: 6px;
     white-space: nowrap;
   }
 
-  .ny-btn:active { transform: translateY(1px); }
-
-  /* Solid: always filled */
   .ny-btn--solid {
-    background: var(--copper, #b25a1b);
+    background: var(--accent);
     color: #fff;
-    border-color: var(--copper, #b25a1b);
-  }
-  .ny-btn--solid:hover {
-    background: #9f4f17;
-    border-color: #9f4f17;
+    border-color: var(--accent);
   }
 
-  /* Outline: border + text, fill ONLY on hover */
   .ny-btn--outline {
-    background: transparent;
-    color: var(--copper, #b25a1b);
-    border-color: var(--copper, #b25a1b);
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--accent);
+    border-color: var(--accent-soft);
   }
-  .ny-btn--outline:hover {
-    background: var(--copper, #b25a1b);
-    color: #fff;
+
+  .ny-btn:hover {
+    filter: brightness(1.03);
   }
 </style>

@@ -1,10 +1,36 @@
 ---
+type Props = {
+  title: string;
+};
+
 const { title } = Astro.props;
 ---
 
-<div class="card bg-white rounded-xl border border-black/10 shadow-sm p-6 space-y-4">
-  <h3 class="text-lg font-semibold">{title}</h3>
-  <div class="text-sm leading-relaxed">
+<article class="ny-card">
+  <h3 class="ny-card__title">{title}</h3>
+  <div class="ny-card__body">
     <slot />
   </div>
-</div>
+</article>
+
+<style>
+  .ny-card {
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-soft);
+    padding: 20px 20px 18px;
+  }
+
+  .ny-card__title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .ny-card__body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+</style>

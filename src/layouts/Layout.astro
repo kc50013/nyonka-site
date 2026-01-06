@@ -1,94 +1,459 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import type { AstroComponentFactory } from "astro";
 
-const { title = "Nyonka — Mining Cooperative", description = "" } = Astro.props;
+type Props = {
+  title?: string;
+  children?: AstroComponentFactory;
+};
+
+const { title = "Nyonka — Mining Cooperative" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
-    {description ? <meta name="description" content={description} /> : null}
-
-    <!-- Tailwind v4 entry -->
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Nyonka Mining Cooperative — lawful, community-owned mineral stewardship for jobs, skills, and shared prosperity."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style>
-      :root{
-        --ny-green:#0f3b2f;
-        --ny-copper:#b7652a;
-        --ny-copper-dark:#8f4d1f;
-        --ny-bg:#f6f0e9;
-        --ny-ink:#10211b;
-        --ny-card:#fffdf9;
+      :root {
+        --bg-page: #f5ece2;
+        --bg-card: #ffffff;
+        --forest: #0f3d2e;
+        --accent: #c35a13;
+        --accent-soft: #f5c09a;
+        --text-main: #2b2620;
+        --text-soft: #5b5246;
+        --radius-lg: 18px;
+        --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.08);
       }
 
-      body{ background:var(--ny-bg); color:var(--ny-ink); }
-
-      /* NAV links: green normally, copper on hover */
-      .ny-nav a{ color:var(--ny-green); }
-      .ny-nav a:hover{ color:var(--ny-copper); }
-
-      /* BODY links: copper always */
-      .ny-body a{
-        color:var(--ny-copper);
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
-      .ny-body a:hover{ color:var(--ny-copper-dark); }
-
-      /* BODY buttons: outline copper; fill copper on hover (never invisible) */
-      .ny-btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:.5rem;
-
-        padding:.6rem 1.05rem;
-        border-radius:9999px;
-
-        border:1.5px solid var(--ny-copper) !important;
-        background:transparent !important;
-        color:var(--ny-copper) !important;
-
-        font-weight:700;
-        line-height:1;
-        text-decoration:none !important;
-
-        transition: background .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
-      }
-      .ny-btn:hover{
-        background:var(--ny-copper) !important;
-        border-color:var(--ny-copper) !important;
-        color:#fff !important;
-      }
-      .ny-btn:active{ transform: translateY(1px); }
-      .ny-btn:focus-visible{
-        outline:3px solid rgba(183,101,42,.35);
-        outline-offset:3px;
+      * {
+        box-sizing: border-box;
       }
 
-      /* Cards */
-      .ny-card{
-        background:var(--ny-card);
-        border:1px solid rgba(16,33,27,.10);
-        border-radius:16px;
-        box-shadow: 0 10px 25px rgba(16,33,27,.08);
+      html,
+      body {
+        margin: 0;
+        padding: 0;
       }
 
-      .ny-rule{ border-top:1px solid rgba(16,33,27,.12); }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg-page);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      main {
+        min-height: 80vh;
+      }
+
+      .ny-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ny-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        backdrop-filter: blur(12px);
+        background: linear-gradient(
+          to bottom,
+          rgba(245, 236, 226, 0.96),
+          rgba(245, 236, 226, 0.9),
+          rgba(245, 236, 226, 0.84)
+        );
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+      }
+
+      .ny-header__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .ny-brand {
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--forest);
+        white-space: nowrap;
+      }
+
+      .ny-brand span {
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .ny-nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-left: auto;
+      }
+
+      .ny-nav__links {
+        display: flex;
+        gap: 14px;
+        font-size: 14px;
+        color: var(--text-soft);
+      }
+
+      .ny-nav__link {
+        position: relative;
+        padding: 4px 0;
+      }
+
+      .ny-nav__link[data-active="true"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .ny-nav__cta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ny-chip {
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        padding: 6px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .ny-menu-btn {
+        display: none;
+        align-items: center;
+        gap: 6px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 6px 14px;
+        font-size: 13px;
+        background: #fff;
+      }
+
+      .ny-menu-btn span {
+        font-weight: 600;
+      }
+
+      .ny-menu-icon {
+        width: 15px;
+        height: 11px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .ny-menu-icon span {
+        height: 2px;
+        border-radius: 99px;
+        background: #1b150f;
+      }
+
+      .ny-mobile-nav {
+        display: none;
+      }
+
+      .ny-footer {
+        margin-top: auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 26px 20px 18px;
+        color: var(--text-soft);
+        font-size: 13px;
+      }
+
+      .ny-footer__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        gap: 12px;
+      }
+
+      .ny-footer__top {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1.3fr);
+        gap: 22px;
+      }
+
+      .ny-footer strong {
+        color: var(--text-main);
+      }
+
+      .ny-footer__list {
+        list-style: none;
+        padding: 0;
+        margin: 6px 0 0;
+        display: grid;
+        gap: 3px;
+      }
+
+      .ny-footer__bottom {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.5);
+        padding-top: 6px;
+      }
+
+      @media (max-width: 900px) {
+        .ny-header__inner {
+          max-width: 100%;
+          padding-inline: 16px;
+        }
+
+        .ny-nav__links {
+          display: none;
+        }
+
+        .ny-nav__cta {
+          display: none;
+        }
+
+        .ny-menu-btn {
+          display: inline-flex;
+          margin-left: auto;
+        }
+
+        .ny-header__inner {
+          gap: 10px;
+        }
+
+        .ny-mobile-nav {
+          display: none;
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+          padding: 10px 16px 12px;
+          background: rgba(245, 236, 226, 0.98);
+        }
+
+        .ny-mobile-nav__links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px 16px;
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
+        .ny-mobile-nav__cta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .ny-header[data-open="true"] + .ny-mobile-nav {
+          display: block;
+        }
+
+        .ny-footer__top {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
     </style>
   </head>
 
   <body>
-    <Header />
-    <main class="ny-body">
-      <slot />
-    </main>
-    <Footer />
+    <div class="ny-shell">
+      <!-- Header + desktop nav -->
+      <header class="ny-header" data-open="false" id="ny-header">
+        <div class="ny-header__inner">
+          <div class="ny-brand">
+            NYONKA <span>— Mining Cooperative</span>
+          </div>
+
+          <nav class="ny-nav" aria-label="Primary navigation">
+            <div class="ny-nav__links">
+              <a href="/" class="ny-nav__link" data-active={Astro.url.pathname === "/"}>
+                Home
+              </a>
+              <a
+                href="/about"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/about")}
+              >
+                About
+              </a>
+              <a
+                href="/statement"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/statement")}
+              >
+                Statement
+              </a>
+              <a
+                href="/operations"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/operations")}
+              >
+                Operations
+              </a>
+              <a
+                href="/compliance"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/compliance")}
+              >
+                Compliance
+              </a>
+              <a
+                href="/community-impact"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/community-impact")}
+              >
+                Impact
+              </a>
+              <a
+                href="/membership"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/membership")}
+              >
+                Membership
+              </a>
+              <a
+                href="/partners"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/partners")}
+              >
+                Partners
+              </a>
+              <a
+                href="/contact"
+                class="ny-nav__link"
+                data-active={Astro.url.pathname.startsWith("/contact")}
+              >
+                Contact
+              </a>
+            </div>
+
+            <div class="ny-nav__cta">
+              <a href="/contact" class="ny-chip">Partner With Us</a>
+            </div>
+
+            <button class="ny-menu-btn" type="button" id="ny-menu-btn">
+              <div class="ny-menu-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span>Menu</span>
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Mobile nav reveal -->
+      <nav class="ny-mobile-nav" aria-label="Mobile navigation">
+        <div class="ny-mobile-nav__links">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/statement">Statement</a>
+          <a href="/operations">Operations</a>
+          <a href="/compliance">Compliance</a>
+          <a href="/community-impact">Impact</a>
+          <a href="/membership">Membership</a>
+          <a href="/partners">Partners</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="ny-mobile-nav__cta">
+          <span style="font-size: 13px; color: var(--text-soft)">
+            Lawful, community-based mineral stewardship.
+          </span>
+          <a href="/contact" class="ny-chip">Partner With Us</a>
+        </div>
+      </nav>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="ny-footer">
+        <div class="ny-footer__inner">
+          <div class="ny-footer__top">
+            <div>
+              <strong>NYONKA — Mining Cooperative</strong>
+              <p style="margin: 6px 0 0">
+                Lawful, community-owned mineral stewardship for jobs, skills,
+                and shared prosperity.
+              </p>
+            </div>
+            <div>
+              <strong>Key Pages</strong>
+              <ul class="ny-footer__list">
+                <li><a href="/statement">Statement of Purpose</a></li>
+                <li><a href="/compliance">Compliance</a></li>
+                <li><a href="/community-impact">Impact</a></li>
+              </ul>
+            </div>
+            <div>
+              <strong>Contact</strong>
+              <ul class="ny-footer__list">
+                <li>
+                  Email:
+                  <a href="mailto:nyonkaminingcooperative@gmail.com">
+                    nyonkaminingcooperative@gmail.com
+                  </a>
+                </li>
+                <li>Phone: 0762076869</li>
+                <li>Zambia</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ny-footer__bottom">
+            © {new Date().getFullYear()} Nyonka Mining Cooperative. All rights
+            reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script is:inline>
+      (() => {
+        const header = document.getElementById("ny-header");
+        const btn = document.getElementById("ny-menu-btn");
+        if (!header || !btn) return;
+
+        btn.addEventListener("click", () => {
+          const open = header.getAttribute("data-open") === "true";
+          header.setAttribute("data-open", open ? "false" : "true");
+        });
+
+        // Close menu when resizing to desktop
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 900) {
+            header.setAttribute("data-open", "false");
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

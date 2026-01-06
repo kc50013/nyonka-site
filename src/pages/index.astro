@@ -6,7 +6,7 @@ import Card from "../components/Card.astro";
 import Section from "../components/Section.astro";
 
 const heroImages = [
- "/images/hero/01-v2.jpg",
+  "/images/hero/01-v2.jpg",
   "/images/hero/02-v2.jpg",
   "/images/hero/03-v2.jpg",
   "/images/hero/04-v2.jpg",
@@ -17,15 +17,13 @@ const heroImages = [
 
 <Layout title="Home">
   <main class="ny-page">
-
-    <!-- WIDER hero container ONLY -->
     <div class="ny-container ny-container--hero">
       <HeroSlideshow images={heroImages} intervalMs={5000}>
         <h1 class="hero-title">Community-Based Mineral Stewardship</h1>
 
         <p class="hero-lead">
           A lawful, accountable cooperative framework for lawful mineral
-          development, community participation, and shared economic growth—
+          development, community participation, and shared economic growth —
           enabling communities to participate lawfully in mineral development.
         </p>
 
@@ -36,24 +34,27 @@ const heroImages = [
       </HeroSlideshow>
     </div>
 
-    <!-- NORMAL page width resumes here -->
     <div class="ny-container">
       <Section title="Start Here">
         <p>
-          If you are Government, a partner, an investor, or a community stakeholder,
-          the quickest way to understand our purpose is the Statement of Purpose.
+          If you are Government, a partner, an investor, or a community
+          stakeholder, the quickest way to understand our purpose is the
+          Statement of Purpose.
         </p>
 
         <div class="row">
-          <Button href="/statement" variant="outline">Statement of Purpose</Button>
+          <Button href="/statement" variant="outline">
+            Statement of Purpose
+          </Button>
           <Button href="/contact" variant="outline">Contact</Button>
         </div>
 
         <div class="grid3">
           <Card title="Who We Are">
             <p>
-              A community-rooted cooperative in Masaiti District, Zambia — organized
-              to operate lawfully, transparently, and with respect for traditional leadership.
+              A community-rooted cooperative in Masaiti District, Zambia —
+              organized to operate lawfully, transparently, and with respect for
+              traditional leadership.
             </p>
             <div class="card-actions">
               <Button href="/about" variant="outline">About Nyonka</Button>
@@ -62,27 +63,30 @@ const heroImages = [
 
           <Card title="Our Ethos">
             <p>
-              Lawfulness over informality. Collective benefit over individual gain.
-              Long-term development over short-term extraction.
+              Lawfulness over informality. Collective benefit over individual
+              gain. Long-term development over short-term extraction.
             </p>
             <div class="card-actions">
-              <Button href="/statement" variant="outline">Read Statement</Button>
+              <Button href="/statement" variant="outline">
+                Read Statement
+              </Button>
             </div>
           </Card>
 
           <Card title="How We Work">
             <p>
-              Safety, environmental stewardship, and compliance-first operations,
-              aligned with national development priorities.
+              Safety, environmental stewardship, and compliance-first
+              operations, aligned with national development priorities.
             </p>
             <div class="card-actions">
-              <Button href="/compliance" variant="outline">Compliance</Button>
+              <Button href="/compliance" variant="outline">
+                Compliance
+              </Button>
             </div>
           </Card>
         </div>
       </Section>
     </div>
-
   </main>
 </Layout>
 
@@ -91,17 +95,16 @@ const heroImages = [
     padding: 18px 0 40px;
   }
 
-  /* Default container (used everywhere else) */
   .ny-container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 44px;
   }
 
-  /* ⭐ HERO ONLY: wider, but still not touching edges */
   .ny-container--hero {
-    max-width: 1280px;   /* wider than rest of site */
-    padding: 0 24px;     /* slimmer side gap */
+    max-width: 1280px;
+    padding: 0 24px;
+    margin-bottom: 24px;
   }
 
   .hero-title {
@@ -109,7 +112,7 @@ const heroImages = [
     font-weight: 900;
     line-height: 1.02;
     font-size: clamp(46px, 5.2vw, 68px);
-    color: var(--forest, #0f3d2e);
+    color: var(--forest);
     max-width: 18ch;
   }
 
@@ -118,6 +121,7 @@ const heroImages = [
     line-height: 1.7;
     opacity: 0.92;
     margin: 0 0 16px;
+    color: var(--text-soft);
   }
 
   .hero-cta {
@@ -149,6 +153,7 @@ const heroImages = [
     .ny-container {
       padding: 0 22px;
     }
+
     .ny-container--hero {
       padding: 0 16px;
     }

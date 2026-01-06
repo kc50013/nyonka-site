@@ -11,7 +11,6 @@ if (!images || images.length === 0) {
   throw new Error("HeroSlideshow requires a non-empty images[] prop.");
 }
 
-// Unique id so the script always targets THIS hero instance (Astro can hoist scripts)
 const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
 ---
 
@@ -31,7 +30,6 @@ const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
     ))}
   </div>
 
-  <!-- lighter veil: keeps it crisp + professional (not washed out) -->
   <div class="ny-hero__veil" aria-hidden="true"></div>
 
   <div class="ny-hero__content">
@@ -52,13 +50,12 @@ const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) return;
 
-    // Ensure exactly one active
     imgs.forEach((img, idx) => img.classList.toggle("is-active", idx === 0));
 
     let i = 0;
     const ms = Math.max(1500, Number(intervalMs) || 5000);
 
-    // Preload remaining images to avoid “stuck on first”
+    // Preload the rest
     for (let k = 1; k < imgs.length; k++) {
       const src = imgs[k].getAttribute("src");
       if (src) {
@@ -85,10 +82,13 @@ const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
     overflow: hidden;
     background: #000;
     min-height: clamp(420px, 54vh, 620px);
-    box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+    box-shadow: var(--shadow-soft);
   }
 
-  .ny-hero__slides { position: absolute; inset: 0; }
+  .ny-hero__slides {
+    position: absolute;
+    inset: 0;
+  }
 
   .ny-hero__img {
     position: absolute;
@@ -96,26 +96,26 @@ const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     opacity: 0;
     transition: opacity 900ms ease-in-out;
     will-change: opacity;
     transform: scale(1.01);
   }
-  .ny-hero__img.is-active { opacity: 1; }
 
-  /* crisp, professional left-to-right veil (not too strong) */
+  .ny-hero__img.is-active {
+    opacity: 1;
+  }
+
   .ny-hero__veil {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(247,243,238,0.78) 0%,
-        rgba(247,243,238,0.58) 34%,
-        rgba(247,243,238,0.16) 70%,
-        rgba(0,0,0,0.00) 100%
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(247, 243, 238, 0.78) 0%,
+      rgba(247, 243, 238, 0.58) 34%,
+      rgba(247, 243, 238, 0.16) 70%,
+      rgba(0, 0, 0, 0) 100%
+    );
     pointer-events: none;
   }
 
@@ -129,14 +129,17 @@ const heroId = `ny-hero-${Math.random().toString(36).slice(2)}`;
   }
 
   @media (max-width: 900px) {
+    .ny-hero__content {
+      padding: 24px 20px 26px;
+    }
+
     .ny-hero__veil {
-      background:
-        linear-gradient(
-          180deg,
-          rgba(247,243,238,0.84) 0%,
-          rgba(247,243,238,0.62) 55%,
-          rgba(247,243,238,0.18) 100%
-        );
+      background: linear-gradient(
+        180deg,
+        rgba(247, 243, 238, 0.84) 0%,
+        rgba(247, 243, 238, 0.62) 55%,
+        rgba(247, 243, 238, 0.18) 100%
+      );
     }
   }
 </style>

@@ -1,16 +1,162 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import HeroSlideshow from "../components/HeroSlideshow.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import Section from "../components/Section.astro";
 
+const heroImages = [
+  "/images/hero/01.jpg",
+  "/images/hero/02.jpg",
+  "/images/hero/03.jpg",
+  "/images/hero/04.jpg",
+  "/images/hero/05.jpg",
+  "/images/hero/06.jpg",
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home">
+  <main class="ny-page">
+
+    <!-- WIDER hero container ONLY -->
+    <div class="ny-container ny-container--hero">
+      <HeroSlideshow images={heroImages} intervalMs={5000}>
+        <h1 class="hero-title">Community-Based Mineral Stewardship</h1>
+
+        <p class="hero-lead">
+          A lawful, accountable cooperative framework for lawful mineral
+          development, community participation, and shared economic growth—
+          enabling communities to participate lawfully in mineral development.
+        </p>
+
+        <div class="hero-cta">
+          <Button href="/statement" variant="outline">Read Statement</Button>
+          <Button href="/contact" variant="outline">Partner With Us</Button>
+        </div>
+      </HeroSlideshow>
+    </div>
+
+    <!-- NORMAL page width resumes here -->
+    <div class="ny-container">
+      <Section title="Start Here">
+        <p>
+          If you are Government, a partner, an investor, or a community stakeholder,
+          the quickest way to understand our purpose is the Statement of Purpose.
+        </p>
+
+        <div class="row">
+          <Button href="/statement" variant="outline">Statement of Purpose</Button>
+          <Button href="/contact" variant="outline">Contact</Button>
+        </div>
+
+        <div class="grid3">
+          <Card title="Who We Are">
+            <p>
+              A community-rooted cooperative in Masaiti District, Zambia — organized
+              to operate lawfully, transparently, and with respect for traditional leadership.
+            </p>
+            <div class="card-actions">
+              <Button href="/about" variant="outline">About Nyonka</Button>
+            </div>
+          </Card>
+
+          <Card title="Our Ethos">
+            <p>
+              Lawfulness over informality. Collective benefit over individual gain.
+              Long-term development over short-term extraction.
+            </p>
+            <div class="card-actions">
+              <Button href="/statement" variant="outline">Read Statement</Button>
+            </div>
+          </Card>
+
+          <Card title="How We Work">
+            <p>
+              Safety, environmental stewardship, and compliance-first operations,
+              aligned with national development priorities.
+            </p>
+            <div class="card-actions">
+              <Button href="/compliance" variant="outline">Compliance</Button>
+            </div>
+          </Card>
+        </div>
+      </Section>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .ny-page {
+    padding: 18px 0 40px;
+  }
+
+  /* Default container (used everywhere else) */
+  .ny-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 44px;
+  }
+
+  /* ⭐ HERO ONLY: wider, but still not touching edges */
+  .ny-container--hero {
+    max-width: 1280px;   /* wider than rest of site */
+    padding: 0 24px;     /* slimmer side gap */
+  }
+
+  .hero-title {
+    margin: 0 0 12px;
+    font-weight: 900;
+    line-height: 1.02;
+    font-size: clamp(46px, 5.2vw, 68px);
+    color: var(--forest, #0f3d2e);
+    max-width: 18ch;
+  }
+
+  .hero-lead {
+    max-width: 62ch;
+    line-height: 1.7;
+    opacity: 0.92;
+    margin: 0 0 16px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .row {
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .grid3 {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .card-actions {
+    margin-top: 14px;
+    display: flex;
+  }
+
+  @media (max-width: 980px) {
+    .ny-container {
+      padding: 0 22px;
+    }
+    .ny-container--hero {
+      padding: 0 16px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .grid3 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

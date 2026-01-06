@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "Community Impact";
+const pageDescription =
+  "Nyonka Mining Cooperative Limited is designed to translate lawful mineral activity into local employment, skills development, youth and women inclusion, and broader community upliftment—starting in Masaiti District with potential replication elsewhere in Zambia.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Section
+    title="Community Impact"
+    subtitle="Responsible community participation that turns mineral potential into employment, skills, and shared local development."
+  >
+    <div class="mx-auto max-w-4xl space-y-6 text-[#355E4A] leading-relaxed">
+
+      <Card title="Our Impact Focus">
+        <p>
+          Nyonka Mining Cooperative Limited exists to ensure that lawful mineral activity produces
+          tangible local value—not only for members, but for the wider community. Our community impact
+          approach prioritizes
+          <strong> local employment</strong>, <strong>skills development</strong>, and inclusive participation,
+          with deliberate attention to <strong>youth and women</strong>.
+        </p>
+
+        <p class="mt-4">
+          Our approach
+          is to build real impact progressively through lawful operations, disciplined administration, and
+          community-rooted participation.
+        </p>
+      </Card>
+
+      <Card title="Local Employment and Income Circulation">
+        <p>
+          Where operations occur, the Cooperative prioritizes structured pathways for local people to earn
+          income through lawful work. This helps circulate money within rural communities and strengthens
+          household stability.
+        </p>
+
+        <p class="mt-4">
+          In addition to direct work, responsible mining activity can stimulate local value chains such as
+          transport, food supply, basic services, and other community-based economic activity.
+        </p>
+      </Card>
+
+      <Card title="Skills Development and On-the-Job Learning">
+        <p>
+          Beyond income, we treat mineral development as a platform for skills development. Through structured
+          participation, members and community participants are exposed to basic operational discipline, safety
+          awareness, teamwork, and practical work routines that can translate into broader economic capability.
+        </p>
+
+        <p class="mt-4">
+          Over time, this strengthens the community’s capacity to participate more effectively in the formal
+          economy and reduces dependence on informal, unsafe, or exploitative models.
+        </p>
+      </Card>
+
+      <Card title="Youth and Women Inclusion">
+        <p>
+          Nyonka Mining Cooperative Limited recognizes that youth unemployment and limited economic inclusion
+          are key drivers of poverty and instability. Our cooperative model is designed to create structured,
+          lawful participation opportunities that intentionally include <strong>young people</strong> and
+          <strong>women</strong>.
+        </p>
+
+        <p class="mt-4">
+          Inclusion is approached through participation pathways, fair access to opportunities, and a cooperative
+          culture that values dignity, responsibility, and contribution.
+        </p>
+      </Card>
+
+      <Card title="Community Consultation and Stability">
+        <p>
+          We believe community impact begins before any activity starts. For this reason, the Cooperative affirms
+          <strong>community consultation</strong> and consistent engagement with
+          <strong>traditional leadership</strong> as core practices.
+        </p>
+
+        <p class="mt-4">
+          This approach helps avoid conflict, builds legitimacy, and ensures that mineral development is aligned
+          with local realities and community expectations.
+        </p>
+      </Card>
+
+      <Card title="Broader Community Upliftment">
+        <p>
+          While the Cooperative does not make public quantitative promises, our long-term intent is that lawful,
+          structured mineral activity contributes to broader community upliftment—through stronger local economies,
+          increased capability, and improved community conditions.
+        </p>
+
+        <p class="mt-4">
+          We begin in <strong>Masaiti District</strong>, with the intention that successful community-based models can
+          be replicated in other parts of Zambia where communities sit on mineral-bearing land but remain excluded
+          from meaningful participation.
+        </p>
+      </Card>
+
+      <div class="flex flex-wrap gap-3 pt-4">
+        <Button href="/partners" variant="secondary">Partners</Button>
+        <Button href="/contact" variant="primary">Contact</Button>
+      </div>
+
+    </div>
+  </Section>
+</Layout>

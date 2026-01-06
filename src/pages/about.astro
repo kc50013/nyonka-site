@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "About";
+const pageDescription =
+  "Nyonka Mining Cooperative is a community-rooted cooperative structured to develop minerals lawfully and transparently while converting local mineral potential into jobs, skills, and shared prosperity.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Section
+    title="About Nyonka"
+    subtitle=" A cooperative framework for lawful mineral development that corrects structural exclusion by enabling community participation and shared economic growth."
+  >
+    <div class="grid gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2 space-y-6">
+        <Card title="Who We Are">
+          <p class="text-sm text-[#355E4A] leading-relaxed">
+            Nyonka Mining Co-operative Limited is a community-rooted mining cooperative formed to participate in mineral
+            development legally, transparently, and in coordination with Zambia’s regulatory and governance ecosystem—
+            including traditional authorities, local councils, and national institutions responsible for mining and environmental
+            oversight—so communities can convert dormant mineral potential into jobs, skills, and shared prosperity.
+          </p>
+
+          <div class="mt-4 space-y-3">
+            <p class="text-sm text-[#355E4A] leading-relaxed">
+              Our work addresses a common challenge in many mineral-rich areas: informal or unsafe mining, limited
+              local benefit, weak environmental controls, and low trust. We provide a structured cooperative pathway that
+              prioritizes compliance with Zambia’s mining and environmental requirements, safe operations, transparent
+              administration, and long-term community development.
+            </p>
+            <p class="text-sm text-[#355E4A] leading-relaxed">
+              We are focused on helping communities benefit not only from what is on the surface, but also from what
+              lies underneath—responsibly and sustainably.
+            </p>
+          </div>
+        </Card>
+
+        <Card title="Where We Operate">
+          <p class="text-sm text-[#355E4A] leading-relaxed">
+            We are currently active in <span class="font-medium text-[#1F3D2B]">Masaiti District, Copperbelt Province</span>.
+          </p>
+          <p class="mt-3 text-sm text-[#355E4A] leading-relaxed">
+            Our administrative base is in <span class="font-medium text-[#1F3D2B]">Kitwe</span>, Zambia’s mining hub.
+            This gives us access to mining industry players, suppliers, and professional networks—strengthening our ability
+            to support remote communities in Masaiti and, over time, across Zambia.
+          </p>
+          <p class="mt-3 text-sm text-[#355E4A] leading-relaxed">
+            Our near-term mining focus includes <span class="font-medium text-[#1F3D2B]">iron</span>, while our broader
+            mission is to help communities nationwide build lawful, community-owned mineral projects.
+          </p>
+        </Card>
+      </div>
+
+      <div class="space-y-6">
+        <Card title="Values">
+          <ul class="space-y-3 text-sm text-[#355E4A]">
+            <li><span class="font-medium text-[#1F3D2B]">Lawfulness:</span> compliance-first operations over informality.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Transparency:</span> clear governance, records, and accountability.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Safety:</span> responsible practices that protect members and communities.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Environmental stewardship:</span> minimizing harm and restoring land.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Community benefit:</span> shared prosperity, not extractive gains.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Respect for institutions:</span> coordination with traditional and state oversight bodies.</li>
+          </ul>
+
+          <div class="mt-5">
+            <Button href="/statement" variant="secondary">Read Statement</Button>
+          </div>
+        </Card>
+
+        <Card title="Leadership">
+          <p class="text-sm text-[#355E4A] leading-relaxed">
+            The cooperative is guided by a defined executive
+            structure that supports lawful operations, compliance, and accountability.
+          </p>
+
+          <ul class="mt-4 space-y-2 text-sm text-[#355E4A]">
+            <li><span class="font-medium text-[#1F3D2B]">Chairperson:</span> overall leadership and representation.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Vice Chairperson:</span> supports coordination and continuity.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Secretary:</span> records, governance documentation, and correspondence.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Treasurer:</span> financial stewardship and reporting.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Operations Lead:</span> field coordination and productivity.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Safety &amp; Environment Lead:</span> safety culture and environmental stewardship.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Community Liaison:</span> engagement, grievances, and local benefit alignment.</li>
+            <li><span class="font-medium text-[#1F3D2B]">Compliance Lead:</span> licensing readiness, reporting discipline, and audit support.</li>
+          </ul>
+
+          <div class="mt-5 flex flex-wrap gap-3">
+            <Button href="/membership" variant="primary">Membership</Button>
+            <Button href="/contact" variant="ghost">Contact</Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </Section>
+</Layout>

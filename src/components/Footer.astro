@@ -1,0 +1,65 @@
+---
+import * as SiteModule from "../utils/site";
+const site = (SiteModule as any).default ?? (SiteModule as any).site;
+
+const brand = site?.name ?? "NYONKA — Mining Cooperative";
+const desc =
+  "Lawful, community-owned mineral stewardship for jobs, skills, and shared prosperity.";
+
+const contact = site?.contact ?? {
+  email: "nyonkaminingcooperative@gmail.com",
+  phone: "0762076869",
+  location: "Zambia",
+};
+---
+
+<footer class="ny-footer">
+  <div class="ny-footer__inner">
+    <div>
+      <div class="ny-footer__title">{brand}</div>
+      <p class="ny-footer__text">{desc}</p>
+    </div>
+
+    <div>
+      <div class="ny-footer__heading">Key Pages</div>
+      <ul class="ny-footer__list">
+        <li><a class="ny-footer__link" href="/statement">Statement of Purpose</a></li>
+        <li><a class="ny-footer__link" href="/compliance">Compliance</a></li>
+        <li><a class="ny-footer__link" href="/community-impact">Impact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="ny-footer__heading">Contact</div>
+      <div class="ny-footer__text">
+        <div><strong>Email:</strong> <a class="ny-footer__link" href={`mailto:${contact.email}`}>{contact.email}</a></div>
+        <div><strong>Phone:</strong> <a class="ny-footer__link" href={`tel:${contact.phone}`}>{contact.phone}</a></div>
+        <div>{contact.location}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ny-footer__bottom">
+    © {new Date().getFullYear()} Nyonka Mining Cooperative. All rights reserved.
+  </div>
+</footer>
+
+<style>
+  .ny-footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.08); }
+  .ny-footer__inner { max-width: 1100px; margin: 0 auto; padding: 28px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 22px; }
+  .ny-footer__title { font-weight: 800; margin-bottom: 10px; }
+  .ny-footer__heading { font-weight: 800; margin-bottom: 10px; }
+  .ny-footer__text { opacity: 0.9; line-height: 1.6; }
+  .ny-footer__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+
+  /* body links copper */
+  .ny-footer__link { color: var(--copper, #b25a1b); text-decoration: none; font-weight: 700; }
+  .ny-footer__link:hover { text-decoration: underline; }
+
+  .ny-footer__bottom { max-width: 1100px; margin: 0 auto; padding: 14px 28px 22px; border-top: 1px solid rgba(0,0,0,0.06); opacity: 0.75; font-size: 0.95rem; }
+
+  @media (max-width: 900px) {
+    .ny-footer__inner { grid-template-columns: 1fr; padding: 22px 18px; }
+    .ny-footer__bottom { padding: 14px 18px 22px; }
+  }
+</style>

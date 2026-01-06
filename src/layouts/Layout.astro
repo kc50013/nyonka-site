@@ -1,0 +1,94 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title = "Nyonka — Mining Cooperative", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    {description ? <meta name="description" content={description} /> : null}
+
+    <!-- Tailwind v4 entry -->
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+
+    <style>
+      :root{
+        --ny-green:#0f3b2f;
+        --ny-copper:#b7652a;
+        --ny-copper-dark:#8f4d1f;
+        --ny-bg:#f6f0e9;
+        --ny-ink:#10211b;
+        --ny-card:#fffdf9;
+      }
+
+      body{ background:var(--ny-bg); color:var(--ny-ink); }
+
+      /* NAV links: green normally, copper on hover */
+      .ny-nav a{ color:var(--ny-green); }
+      .ny-nav a:hover{ color:var(--ny-copper); }
+
+      /* BODY links: copper always */
+      .ny-body a{
+        color:var(--ny-copper);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .ny-body a:hover{ color:var(--ny-copper-dark); }
+
+      /* BODY buttons: outline copper; fill copper on hover (never invisible) */
+      .ny-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:.5rem;
+
+        padding:.6rem 1.05rem;
+        border-radius:9999px;
+
+        border:1.5px solid var(--ny-copper) !important;
+        background:transparent !important;
+        color:var(--ny-copper) !important;
+
+        font-weight:700;
+        line-height:1;
+        text-decoration:none !important;
+
+        transition: background .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
+      }
+      .ny-btn:hover{
+        background:var(--ny-copper) !important;
+        border-color:var(--ny-copper) !important;
+        color:#fff !important;
+      }
+      .ny-btn:active{ transform: translateY(1px); }
+      .ny-btn:focus-visible{
+        outline:3px solid rgba(183,101,42,.35);
+        outline-offset:3px;
+      }
+
+      /* Cards */
+      .ny-card{
+        background:var(--ny-card);
+        border:1px solid rgba(16,33,27,.10);
+        border-radius:16px;
+        box-shadow: 0 10px 25px rgba(16,33,27,.08);
+      }
+
+      .ny-rule{ border-top:1px solid rgba(16,33,27,.12); }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main class="ny-body">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

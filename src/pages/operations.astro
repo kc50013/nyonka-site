@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "Operations";
+const pageDescription =
+  "Nyonka Mining Cooperative Limited operates through a phased, compliance-first model focused on lawful community mining, safety, environmental stewardship, and structured local participation.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Section
+    title="Operations"
+    subtitle="A phased, compliance-first approach to lawful community-based mineral development."
+  >
+    <div class="mx-auto max-w-4xl space-y-6 text-[#355E4A] leading-relaxed">
+
+      <Card title="Operational Approach">
+        <p>
+          Nyonka Mining Cooperative Limited operates through a
+          <strong> phased development model</strong>:
+          <strong>
+            licensing → site preparation → controlled community mining →
+            local aggregation → lawful offtake
+          </strong>,
+          conducted in compliance with Zambia’s mining, environmental, labour,
+          and local government requirements.
+        </p>
+
+        <p class="mt-4">
+          This approach is deliberate. It ensures that mineral development
+          proceeds only where it is lawful, socially accepted, and institutionally
+          supported, rather than informal or speculative.
+        </p>
+      </Card>
+
+      <Card title="Site Identification and Early Engagement">
+        <p>
+          The Cooperative has identified sites with visible mineral deposits that
+          have remained unproductive for extended periods, in some cases for
+          generations, while communities living on or near those lands continue
+          to experience persistent poverty and limited economic opportunity.
+        </p>
+
+        <p class="mt-4">
+          Prior to any exploration or mining activity, Nyonka Mining Cooperative
+          Limited has already initiated engagement with
+          <strong> relevant stakeholders</strong>, including local residents and
+          traditional leadership who live in, or govern over, these areas.
+        </p>
+
+        <p class="mt-4">
+          This engagement is intended to establish social legitimacy, manage
+          expectations, prevent conflict, and ensure that any future mineral
+          activity reflects local consent, shared understanding, and community
+          participation from the outset.
+        </p>
+      </Card>
+
+      <Card title="Controlled Community Mining">
+        <p>
+          Where mining activities are undertaken, they are designed to be
+          <strong> controlled, organized, and safety-guided</strong>.
+          The Cooperative prioritizes structured participation over informal or
+          unregulated practices.
+        </p>
+
+        <p class="mt-4">
+          Community members participate through an organized framework that
+          emphasizes lawful conduct, basic safety discipline, environmental
+          awareness, and accountability. This model reduces the risks commonly
+          associated with informal mining while creating pathways for employment
+          and skills development.
+        </p>
+      </Card>
+
+      <Card title="Safety and Environmental Stewardship">
+        <p>
+          Nyonka Mining Cooperative Limited recognizes that mining activity,
+          if poorly managed, can pose risks to people and the environment.
+          For this reason, the Cooperative adopts a
+          <strong> safety-first and environment-conscious posture</strong>.
+        </p>
+
+        <p class="mt-4">
+          This includes basic safety orientation, appropriate use of protective
+          equipment where applicable, responsible handling of materials, and
+          progressive land rehabilitation practices aligned with regulatory
+          expectations.
+        </p>
+      </Card>
+
+      <Card title="Aggregation and Lawful Offtake">
+        <p>
+          Mineral output, where generated, is aggregated in a structured manner
+          and directed toward
+          <strong> lawful offtake channels</strong>.
+          This ensures transparency, traceability, and compliance with applicable
+          fiscal and reporting obligations.
+        </p>
+
+        <p class="mt-4">
+          Through this process, mineral activity is translated into legitimate
+          economic participation, supporting local value chains while contributing
+          to the formal economy.
+        </p>
+      </Card>
+
+      <Card title="What We Do Not Do">
+        <ul class="mt-2 space-y-2 text-sm">
+          <li>• We do not engage in informal or illegal mining.</li>
+          <li>• We do not bypass regulatory institutions or traditional authority.</li>
+          <li>• We do not make speculative claims about production volumes or timelines.</li>
+          <li>• We do not pursue extraction at the expense of safety, law, or community stability.</li>
+        </ul>
+      </Card>
+
+      <div class="flex flex-wrap gap-3 pt-4">
+        <Button href="/compliance" variant="primary">Compliance</Button>
+        <Button href="/community-impact" variant="secondary">Community Impact</Button>
+      </div>
+
+    </div>
+  </Section>
+</Layout>

@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "Compliance";
+const pageDescription =
+  "Nyonka Mining Cooperative Limited is committed to lawful, transparent, conflict-sensitive operations aligned with Zambia’s mining, environmental, labour, and local authority requirements.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Section
+    title="Compliance"
+    subtitle="A compliance-first approach grounded in law, community consent, and institutional coordination."
+  >
+    <div class="mx-auto max-w-4xl space-y-6 text-[#355E4A] leading-relaxed">
+
+      <Card title="Our Compliance Posture">
+        <p>
+          Nyonka Mining Cooperative Limited is committed to operating within Zambia’s
+          <strong> mining, environmental, labour, and local authority frameworks</strong>.
+          We pursue structured community participation in a way that is lawful, accountable,
+          and aligned with responsible mineral development.
+        </p>
+
+        <p class="mt-4">
+          Compliance is not treated as a formality. It is the foundation for legitimacy,
+          safety, and stability—especially in rural areas where mineral activity can easily
+          become informal or contested if governance is weak.
+        </p>
+      </Card>
+
+      <Card title="Working With Institutions and Regulators">
+        <p>
+          Our approach recognizes that lawful mining requires coordination with relevant
+          institutions and oversight bodies. Where applicable, we engage and align with
+          <strong> the Ministry of Mines</strong>,
+          <strong> the Zambia Environmental Management Agency (ZEMA)</strong>,
+          and <strong> local government authorities (including councils)</strong>,
+          alongside other relevant agencies connected to lawful operations.
+        </p>
+
+        <p class="mt-4">
+          We maintain a compliance-first posture across licensing readiness, operational conduct,
+          record discipline, and responsible reporting expectations.
+        </p>
+      </Card>
+
+      <Card title="Local Consent and Traditional Leadership">
+        <p>
+          We place strong emphasis on working with local communities and local traditional
+          leadership because mineral development without consent can create conflict, mistrust,
+          and long-term instability.
+        </p>
+
+        <p class="mt-4">
+          For this reason, the Cooperative prioritizes early engagement, respectful consultation,
+          and structured communication with residents and the traditional structures that govern
+          them. This conflict-sensitive approach helps ensure that any future mineral activity
+          proceeds with social legitimacy and shared understanding.
+        </p>
+      </Card>
+
+      <Card title="Labour and Safety Commitment">
+        <p>
+          Nyonka Mining Cooperative Limited maintains a general commitment to responsible labour
+          practices and a safety-first culture. Where operations occur, we promote discipline,
+          basic safety orientation, and a structured approach that protects people and supports
+          long-term participation.
+        </p>
+      </Card>
+
+      <Card title="Environmental Responsibility">
+        <p>
+          The Cooperative is committed to environmental stewardship. We recognize that mining
+          activity can create environmental risks if unmanaged, and we therefore adopt a posture
+          that prioritizes responsible conduct, prevention of avoidable harm, and progressive
+          restoration aligned with regulatory expectations.
+        </p>
+      </Card>
+
+      <Card title="Transparency and Integrity">
+        <p>
+          Our cooperative model is built for accountability. We aim to operate in a manner that
+          strengthens trust with communities and institutions through transparent administration,
+          responsible decision-making, and a disciplined approach to lawful participation.
+        </p>
+      </Card>
+
+      <div class="flex flex-wrap gap-3 pt-4">
+        <Button href="/statement" variant="secondary">Statement of Purpose</Button>
+        <Button href="/contact" variant="primary">Contact</Button>
+      </div>
+
+    </div>
+  </Section>
+</Layout>

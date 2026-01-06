@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Partners">
+  <Section
+    heading="Partnership Enquiries"
+    subtitle="Structured engagement with institutions, regulators, and responsible partners."
+  >
+    <div class="max-w-3xl space-y-6">
+      <Card title="Working With Institutions">
+        <p>
+          Nyonka Mining Cooperative Limited welcomes engagement with Government
+          institutions, licensed operators, development partners, and
+          responsible investors interested in lawful, community-based mineral
+          development.
+        </p>
+      </Card>
+
+      <Card title="Regulatory Alignment">
+        <p>
+          All partnerships operate in alignment with Zambia’s mining,
+          environmental, labour, and local government frameworks.
+        </p>
+
+        <div class="mt-4 flex gap-4">
+          <Button href="/compliance" variant="outline">
+            Compliance
+          </Button>
+        </div>
+      </Card>
+
+      <Card title="Contact">
+        <p>
+          For partnership discussions, formal engagement, or collaboration
+          enquiries:
+        </p>
+
+        <p class="mt-2">
+          <strong>Email:</strong>
+          <a href="mailto:nyonkaminingcooperative@gmail.com">
+            nyonkaminingcooperative@gmail.com
+          </a>
+          <br />
+          <strong>Phone:</strong> 0762 076 869
+        </p>
+
+        <div class="mt-4">
+          <Button href="/contact">
+            Contact Us
+          </Button>
+        </div>
+      </Card>
+    </div>
+  </Section>
+</Layout>

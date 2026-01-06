@@ -1,0 +1,69 @@
+---
+// src/components/Button.astro
+type Props = {
+  href?: string;
+  variant?: "solid" | "outline";
+  class?: string;
+};
+
+const {
+  href,
+  variant = "solid",
+  class: className = "",
+} = Astro.props;
+
+const Tag = href ? "a" : "button";
+const attrs = href
+  ? { href }
+  : { type: "button" as const };
+---
+
+<Tag
+  {...attrs}
+  class={`ny-btn ny-btn--${variant} ${className}`}
+>
+  <slot />
+</Tag>
+
+<style>
+  .ny-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 120ms ease;
+    border: 1px solid transparent;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .ny-btn:active { transform: translateY(1px); }
+
+  /* Solid: always filled */
+  .ny-btn--solid {
+    background: var(--copper, #b25a1b);
+    color: #fff;
+    border-color: var(--copper, #b25a1b);
+  }
+  .ny-btn--solid:hover {
+    background: #9f4f17;
+    border-color: #9f4f17;
+  }
+
+  /* Outline: border + text, fill ONLY on hover */
+  .ny-btn--outline {
+    background: transparent;
+    color: var(--copper, #b25a1b);
+    border-color: var(--copper, #b25a1b);
+  }
+  .ny-btn--outline:hover {
+    background: var(--copper, #b25a1b);
+    color: #fff;
+  }
+</style>

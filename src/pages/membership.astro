@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+import { SITE } from "../utils/site";
+
+const title = "Membership";
+const description =
+  "How membership works at Nyonka Mining Cooperative: eligibility, application, member rights and responsibilities — in line with our By-Laws and Zambia’s cooperative framework.";
+---
+
+<Layout title={title} description={description}>
+  <Section
+    title="Membership"
+    subtitle="Voluntary, lawful, and accountable participation — built for community ownership, discipline, and shared growth."
+  >
+    <div class="mx-auto max-w-4xl space-y-6 text-[#355E4A] leading-relaxed">
+      <Card title="Membership Overview">
+        <p>
+          Membership in Nyonka Mining Cooperative Limited is a structured form of
+          participation in a lawful cooperative — not an informal arrangement.
+          It is designed to protect members, the community, and the Cooperative
+          through clear rules, democratic decision-making, and compliance with
+          Zambia’s legal and institutional requirements.
+        </p>
+        <p class="mt-3">
+          We welcome community-minded applicants who align with our objectives
+          and values, and who are prepared to contribute in a meaningful way.
+        </p>
+      </Card>
+
+      <Card title="Who Can Apply (Eligibility)">
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>Applicants must be Zambian citizens aged 18 years or older.</li>
+          <li>
+            Applicants must support the objectives, values, and principles of
+            the Cooperative.
+          </li>
+          <li>
+            Applicants must be willing to contribute in good faith — through
+            labour, skills, access to land, equipment, or capital participation
+            (as provided for under the By-Laws).
+          </li>
+          <li>
+            Applicants must agree to abide by the By-Laws and the applicable
+            cooperative legal framework in Zambia.
+          </li>
+          <li>
+            Applicants must not have a criminal record involving dishonesty or
+            fraud.
+          </li>
+        </ul>
+
+        <p class="mt-4 text-sm text-[#355E4A]">
+          Note: Where relevant, the Cooperative may consider practical
+          contribution capacity when reviewing applications (e.g., skills,
+          equipment, or land access), while maintaining fairness and integrity.
+        </p>
+      </Card>
+
+      <Card title="How Membership Works (Application & Admission)">
+        <ol class="mt-2 list-decimal space-y-2 pl-5">
+          <li>
+            <strong>Apply in writing:</strong> submit an application expressing
+            interest and your intended contribution and role.
+          </li>
+          <li>
+            <strong>Review:</strong> the Cooperative reviews applications to
+            protect the integrity, mission, and lawful posture of the
+            organization.
+          </li>
+          <li>
+            <strong>Decision:</strong> admission is not automatic. Acceptance is
+            subject to approval by the Cooperative in line with its By-Laws and
+            governance processes.
+          </li>
+          <li>
+            <strong>Onboarding:</strong> admitted members are oriented on
+            Cooperative expectations, safety culture, and compliance standards.
+          </li>
+        </ol>
+
+        <p class="mt-4">
+          The Cooperative reserves the right to accept or reject applications
+          where necessary to maintain lawfulness, accountability, and unity.
+        </p>
+      </Card>
+
+      <Card title="Rights of Members (High-Level)">
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            Participate in cooperative decision-making under a democratic,
+            member-led model.
+          </li>
+          <li>
+            Fair access to opportunities, programs, and benefits created by the
+            Cooperative, subject to orderly procedure.
+          </li>
+          <li>Access to training and capacity-building initiatives.</li>
+          <li>
+            One-member-one-vote principles consistent with cooperative
+            governance.
+          </li>
+          <li>
+            Access to information in line with Cooperative procedures and lawful
+            confidentiality requirements.
+          </li>
+        </ul>
+      </Card>
+
+      <Card title="Responsibilities of Members">
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>Uphold honesty, integrity, unity, and cooperation.</li>
+          <li>
+            Follow safety, environmental, and operational rules set by the
+            Cooperative and by law.
+          </li>
+          <li>
+            Respect governance structures and lawful decisions made through
+            Cooperative processes.
+          </li>
+          <li>Participate actively in meetings, duties, and programs.</li>
+          <li>
+            Avoid conduct that undermines the Cooperative, the community, or its
+            lawful standing with institutions.
+          </li>
+        </ul>
+      </Card>
+
+      <Card title="Values & Cooperative Principles">
+        <p>
+          Nyonka is built on cooperative principles that support legitimacy,
+          discipline, and community benefit:
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>Voluntary and open membership</li>
+          <li>Democratic member control</li>
+          <li>Member economic participation</li>
+          <li>Education, training, and capacity-building</li>
+          <li>Concern for community and long-term development</li>
+        </ul>
+      </Card>
+
+      <Card title="Important Note">
+        <p>
+          Membership is <strong>not</strong> a guarantee of income, and it does
+          not bypass Zambia’s mining, environmental, labour, or local government
+          requirements. Membership is a commitment to lawful participation,
+          discipline, and accountability.
+        </p>
+      </Card>
+
+      <div class="rounded-2xl border border-[#1F3D2B]/10 bg-white p-6 shadow-lg">
+        <h3 class="text-base font-semibold text-[#1F3D2B]">Apply or Enquire</h3>
+        <p class="mt-2 text-sm text-[#355E4A]">
+          For membership enquiries and application guidance, contact us directly.
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-3">
+          <Button href="/contact" variant="primary">Contact</Button>
+          <Button href="/partners" variant="secondary">Partnerships</Button>
+        </div>
+
+        <div class="mt-4 text-sm text-[#355E4A]">
+          <div><strong>Email:</strong> {SITE.email}</div>
+          <div><strong>Phone:</strong> {SITE.phone}</div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Layout>

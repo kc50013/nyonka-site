@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+
+const title = "Contact";
+const description =
+  "Contact Nyonka Mining Cooperative Limited for partnership, compliance, and general enquiries.";
+---
+
+<Layout title={title} description={description}>
+  <Section
+    title="Contact"
+    subtitle="Formal enquiries, partnership discussions, and institutional engagement."
+  >
+    <div class="mx-auto max-w-4xl space-y-6 text-[#355E4A] leading-relaxed">
+
+      <Card title="Contact Information">
+        <p>
+          For official enquiries, partnership discussions, or institutional
+          engagement, please contact us using the details below or submit a
+          message through the form.
+        </p>
+
+        <div class="mt-4 space-y-1 text-sm">
+          <div><strong>Email:</strong> nyonkaminingcooperative@gmail.com</div>
+          <div><strong>Phone:</strong> 0762076869</div>
+        </div>
+      </Card>
+
+      <Card title="Send Us a Message">
+        <!-- Netlify Form -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="mt-4 space-y-4"
+        >
+          <!-- Required hidden input for Netlify -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- Honeypot field -->
+          <p class="hidden">
+            <label>
+              Don’t fill this out if you’re human:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <div>
+            <label class="block text-sm font-medium text-[#1F3D2B]">
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="mt-1 w-full rounded-lg border border-[#1F3D2B]/20 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F3D2B]"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-[#1F3D2B]">
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="mt-1 w-full rounded-lg border border-[#1F3D2B]/20 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F3D2B]"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-[#1F3D2B]">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              class="mt-1 w-full rounded-lg border border-[#1F3D2B]/20 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F3D2B]"
+              placeholder="e.g. XXX X XXX XXX"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-[#1F3D2B]">
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows="4"
+              required
+              class="mt-1 w-full rounded-lg border border-[#1F3D2B]/20 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1F3D2B]"
+              placeholder="Write your message here..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="rounded-lg bg-[#1F3D2B] px-6 py-2 text-sm font-semibold text-white hover:bg-[#163024]"
+          >
+            Send Message
+          </button>
+        </form>
+      </Card>
+
+    </div>
+  </Section>
+</Layout>
